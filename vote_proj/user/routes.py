@@ -27,3 +27,11 @@ def login():
 def add_ballot():
     ballot_name = request.form.get('item_name')
     return User().add_ballot_name(ballot_name)
+
+@app.route('/user/add_ballot_item', methods=["POST"])             #being used in scripts.js file
+def add_ballot_item():
+    item_name = request.form.get('item_name')
+    image = request.form.get('image')
+    description = request.form.get('description')
+
+    return User().add_ballot_item(item_name, image, description)

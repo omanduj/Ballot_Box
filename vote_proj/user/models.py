@@ -49,7 +49,12 @@ class User():
         return jsonify({ 'error': 'Invalid Credentials' }), 401
 
     def add_ballot_name(self,item):
-        # db.users.find_one({'email': session['user']['email']})
+        session['ballot_items'] = item
         db.users.update({"email": session['user']['email']},
-                     {"$set": {"ballot_items": {item: {}}}});
-        return jsonify({'success': 'item added'}), 200
+                     {"$set": {"ballot_items.{}".format(item): {} } } );
+        return jsonify({'success': 'Ballot added'}), 200
+
+    def add_ballot_item(self, item_name, image, description):
+        db.users.update({"email": session['user']['email']},
+                        {"$set": {"ballot_items.{}.{}".format(session['ballot_items'], item_name): {'image': image, 'description': description, 'votes': 0} } } );
+        return jsonify({'success': 'Item added'}), 200
