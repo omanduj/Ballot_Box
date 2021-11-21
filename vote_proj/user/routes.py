@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, request
 from flask_file import app
-from user.models import User
+from user.models import User, get_ballots
+
+import json
+from bson import json_util
 
 #this endpoint is used to obtain data from the scripts.js file
 #specifically from ("form[name=signup_form]") where "form" defines the html tag,
@@ -35,3 +38,15 @@ def add_ballot_item():
     description = request.form.get('description')
 
     return User().add_ballot_item(item_name, image, description)
+
+
+@app.route('/checker', methods=["GET"])             #being used in scripts.js file
+def checker():
+    ballot_item_dict = get_ballots()
+    return jsonify({'blah': ballot_item_dict})
+
+def get_ballot_items():
+    ballot_item_dict = get_ballots()
+    ballot_names = ballot_item_dict.keys()
+    ballot_names = list(ballot_names)
+    return ballot_item_dict, ballot_names

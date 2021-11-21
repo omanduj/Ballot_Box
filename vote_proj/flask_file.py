@@ -25,6 +25,7 @@ def login_required(f):
 
 #imports route names from seperate file
 from user import routes
+from user.routes import get_ballot_items
 
 @app.route('/')
 def home():
@@ -33,7 +34,8 @@ def home():
 @app.route('/dashboard/')
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    ballot_item_dict, ballot_names = get_ballot_items()
+    return render_template('dashboard.html', ballot_item_dict=ballot_item_dict, ballot_names=ballot_names)
 
 @app.route('/ballot_name/')
 @login_required
