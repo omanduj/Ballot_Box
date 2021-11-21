@@ -5,18 +5,42 @@
     <div class="card-wrapper2">
         <div class="card">
             <h2 class="center">Add Ballet Info</h2>
-            <form>
-                <label for="item_name">Ballot Name</label>
+            <form name="ballot_item">
+                <label for="item_name">Item Name</label>
                 <input type="item_name" name="item_name" class="field" required>
-
-                <label for="image">Image</label>
-                <input type="photo" name="image" class="field">
 
                 <label for="description">Description</label>
                 <input type="description" name="description" class="field">
 
-                <input type="submit" value="Add Item" class="btn" required>
+                <label for="image">Image (In Url Form)</label>
+                <input type="text" name="image" class="field">
+
+                <input style="float: left; margin-left: 2em; width: 40%;" type="submit" value="Add Item" class="btn" required>
             </form>
+            <form action="/dashboard/">
+                <button style="float: left; margin-left: 2em; width: 40%; margin-top: 2.5em;" class="btn" required>
+                    Done
+                </button>
+            </form>
+            <!-- <form method="POST" action="/upload" enctype="multipart/form-data">
+                <p>
+                    <input type="file" autocomplete="off" name="inputFile" onchange="loadFile(event)">
+                </p>
+                <p>
+                    <input type="submit" value="submit">
+                </p>
+                <img id="output" width="100">
+            </form> -->
+            <script>
+                var loadFile = function(event) {
+                    var output = document.getElementById('output');
+                    output.src = URL.createObjectURL(event.target.files[0]);
+                    output.onload = function(){
+                        URL.revokeObjectURL(output.src)
+                    }
+                };
+
+            </script>
         </div>
     </div>
 {% endblock %}
