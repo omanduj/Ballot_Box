@@ -20,22 +20,16 @@
         </div>
         <div class="right_sidebar">
             <div class="hero-bg">
-                <div class="card2">
-                    <h2 class="Center">Ballot Name</h2>
-                    <p>
-                        <strong>ID: </strong> {{session['user']['_id']}} <br>
-                        <strong>Name: </strong> {{session['user']['name']}} <br>
-                        <strong>Email: </strong> {{session['user']['email']}} <br>
-                    </p>
-                </div>
-                <div class="card2">
-                    <h2 class="Center">Ballot Name</h2>
-                    <p>
-                        <strong>ID: </strong> {{session['user']['_id']}} <br>
-                        <strong>Name: </strong> {{session['user']['name']}} <br>
-                        <strong>Email: </strong> {{session['user']['email']}} <br>
-                    </p>
-                </div>
+                {% if ballot_names is defined  %}
+                    {% for name in ballot_names %}
+                        <div class="card2">
+                            <h2 class="Center">{{ name }}</h2>
+                            <p>
+                                {{ ballot_item_dict[name] }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
