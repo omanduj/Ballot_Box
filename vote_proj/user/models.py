@@ -58,3 +58,19 @@ class User():
         db.users.update({"email": session['user']['email']},
                         {"$set": {"ballot_items.{}.{}".format(session['ballot_items'], item_name): {'image': image, 'description': description, 'votes': 0} } } );
         return jsonify({'success': 'Item added'}), 200
+
+def get_ballots():
+    new_dict = {}
+    ballots = db.users.find({ 'email': session['user']['email'] })
+    ballots = list(ballots)
+
+    for item in ballots:
+       name = item['name']
+       new_dict[name] = item
+
+    my_keys = list(new_dict[session['user']['name']].keys())
+
+    if 'ballot_items' in my_keys:
+        ballot_item_dict = new_dict[session['user']['name']]['ballot_items']
+        return ballot_item_dict
+    return {"No Ballots": "Make Some Ballots!"}
