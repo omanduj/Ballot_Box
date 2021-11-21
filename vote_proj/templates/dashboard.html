@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="card-wrapper">
+        <div class="sidebar">
+            <div class="card_side">
+                <h1 class="center">Dashboard</h1>
+                <h2 class="center">Your Info</h2>
+                <p>
+                    <strong>ID: </strong> {{session['user']['_id']}} <br>
+                    <strong>Name: </strong> {{session['user']['name']}} <br>
+                    <strong>Email: </strong> {{session['user']['email']}} <br>
+                </p>
+                <div class="center">
+                    <a href="/ballot_name/" class="btn btn--secondary">Add Ballot</a>
+                    <a href="/user/signout" class="btn btn--secondary">Sign Out</a>
+                </div>
+           </div>
+        </div>
+        <div class="right_sidebar">
+            <div class="hero-bg">
+                <div class="card2">
+                    <h2 class="Center">Ballot Name</h2>
+                    <p>
+                        <strong>ID: </strong> {{session['user']['_id']}} <br>
+                        <strong>Name: </strong> {{session['user']['name']}} <br>
+                        <strong>Email: </strong> {{session['user']['email']}} <br>
+                    </p>
+                </div>
+                <div class="card2">
+                    <h2 class="Center">Ballot Name</h2>
+                    <p>
+                        <strong>ID: </strong> {{session['user']['_id']}} <br>
+                        <strong>Name: </strong> {{session['user']['name']}} <br>
+                        <strong>Email: </strong> {{session['user']['email']}} <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
