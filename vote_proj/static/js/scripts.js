@@ -78,13 +78,13 @@ $("form[name=ballot_item]").submit(function(e){
     var data = $form.serialize();
 
     $.ajax({
-        url: "/user/add_ballot_item", //this refers to url in flask layer to properly connect
+        url: "/user/add_ballot_item", //this refers to url in flask layer that info will be sent to properly connect
         type: "POST",
         data: data,
         dataType: "json",
         success: function(resp) {
             console.log(resp);
-               //redirects on success to dashboard endpoint
+            window.location.href = "/ballot_items/" //redirects on success to dashboard endpoint
         },
         error: function(resp) {
             console.log(resp);
