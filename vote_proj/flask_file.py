@@ -31,6 +31,10 @@ from user.routes import get_ballot_items
 def home():
     return render_template('home.html')
 
+@app.route('/dashboard/<username>', methods=["GET"])
+def profile(username):
+    return f'{username}\'s profile'
+
 @app.route('/dashboard/')
 @login_required
 def dashboard():
