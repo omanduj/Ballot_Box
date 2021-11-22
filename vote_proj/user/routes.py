@@ -36,9 +36,7 @@ def add_ballot_item():
     item_name = request.form.get('item_name')
     image = request.form.get('image')
     description = request.form.get('description')
-
     return User().add_ballot_item(item_name, image, description)
-
 
 @app.route('/checker', methods=["GET"])             #being used in scripts.js file
 def checker():
