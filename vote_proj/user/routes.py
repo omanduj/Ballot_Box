@@ -1,6 +1,6 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_file import app
-from user.models import User, get_ballots
+from user.models import User, get_ballots, get_items_voter
 
 import json
 from bson import json_util
@@ -42,6 +42,11 @@ def add_ballot_item():
 def checker():
     ballot_item_dict = get_ballots()
     return jsonify({'blah': ballot_item_dict})
+
+@app.route('/dashboard/<ballot_name>', methods=["GET"])
+def profile(ballot_name):
+    item = get_items_voter(ballot_name)
+    return render_template('voter_page.html', item=item)
 
 def get_ballot_items():
     ballot_item_dict = get_ballots()

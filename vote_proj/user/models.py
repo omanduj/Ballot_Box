@@ -74,3 +74,24 @@ def get_ballots():
         ballot_item_dict = new_dict[session['user']['name']]['ballot_items']
         return ballot_item_dict
     return {"No Ballots": "Make Some Ballots!"}
+
+def get_items_voter(ballot_name):
+    new_dict = {}
+    ballots = db.users.find({ 'email': session['user']['email']})
+    ballots = list(ballots)
+    for item in ballots:
+       name = item['name']
+       new_dict[name] = item
+    ballots = ballots[0] #converts list of dict to a dict
+
+    if not ballots['ballot_items'][ballot_name]:
+        return {'error': "No items found"}
+    if ballots['ballot_items'][ballot_name]:
+        return ballots['ballot_items'][ballot_name]
+    return {'error': "No items found"}
+
+
+    # if 'ballot_items' in my_keys:
+    #     ballot_item_dict = new_dict[session['user']['name']]['ballot_items']
+    #     return ballot_item_dict
+    # return {"No Ballots": "Make Some Ballots!"}
