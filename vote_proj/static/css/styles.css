@@ -2,6 +2,8 @@
   Colors: http://getuicolors.com
 */
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 /* Setup */
 :root {
   --black: #000000;
@@ -126,6 +128,20 @@ p {
   height: 44.5em;
 }
 
+.voter {
+  margin-top: 1em;
+}
+
+.card-wrapper3 {
+  margin: 0 auto;
+  padding: 90px 35px;
+  padding-bottom: 57em;
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  height: 44.5em;
+}
+
 .hero-bg {
     margin-top: -4em;
 }
@@ -170,11 +186,56 @@ p {
     transition: color .15s ease, background-color .15s ease;
 }
 
+.content_name {
+    font-family: 'Dosis', sans-serif;
+    font-size: 150%;
+}
+.content {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 150%;
+    margin-top: 1em;
+}
+
+.content_votes {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 150%;
+    margin-top: 1em;
+    margin-bottom: -.5em;
+}
+
+.content_image {
+    width: 15em;
+    height: 10em;
+    margin-top: 1em;
+}
+
 .card {
   margin: 0 30px 60px;
   padding: 20px 40px;
   float: left;
   width: 460px;
+  box-shadow: 0 8px 26px -4px rgba(0,0,0,0.15);
+  border-radius: 5px;
+  background: white;
+}
+
+
+
+#scroll {
+    background: url('/static/images/dashboard_side.jpg');
+}
+
+
+
+
+
+.card5 {
+  margin: 0 30px 60px;
+  padding: 20px 40px;
+  float: left;
+  margin-top: -1em;
+  width: 19em;
+  height: 26em;
   box-shadow: 0 8px 26px -4px rgba(0,0,0,0.15);
   border-radius: 5px;
   background: white;
@@ -319,4 +380,38 @@ input[type=submit2] {
  width: 10em;
  margin: 3em -1em;
  display: block;
+}
+
+
+
+.voter {
+margin-top: -6em;
+  padding: 11px 30px 10px;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  background: var(--primary);
+  transition: color .15s ease, background-color .15s ease;
+}
+
+.voter:hover {
+  background: var(--primary-dark);
+}
+
+.voter--secondary {
+  color: var(--almost-black);
+  background: var(--secondary);
+}
+
+.voter--secondary:hover {
+  background: var(--secondary-dark);
 }
