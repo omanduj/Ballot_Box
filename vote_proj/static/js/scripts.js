@@ -94,3 +94,25 @@ $("form[name=ballot_item]").submit(function(e){
     })
     e.preventDefault();
 });
+
+
+$("form[name=vote]").submit(function(e){
+
+    var $form = $(this);
+    var $error = $form.find(".error");
+    var data = $form.serialize();
+
+    $.ajax({
+        url: "/voting", //this refers to url in flask layer that info will be sent to properly connect
+        type: "POST",
+        data: data,
+        dataType: "json",
+        success: function(resp) {
+            console.log(resp);
+        },
+        error: function(resp) {
+            console.log(resp);                                                    //of signup class. So it will print out the error whose key is error
+        }
+    })
+    e.preventDefault();
+});
