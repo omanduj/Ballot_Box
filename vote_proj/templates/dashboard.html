@@ -30,9 +30,7 @@
                                         {% for item in ballot_item_dict[name] %}
                                             <div>
                                                 <div class="item_display">
-                                                    <div class="item_display2">
                                                     {{ item }}: {{ballot_item_dict[name][item]['votes'] }}
-                                                    </div>
                                                 </div>
                                             </div>
                                         {% endfor %}
