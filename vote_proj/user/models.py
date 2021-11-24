@@ -78,8 +78,12 @@ def get_email():
     return session['user']['email']
 
 def del_img(item, ballot_name):
-    db.mycollection.update({'email': session['user']['email']}, {'$pull':{'ballot_items.{}.{}.description'.format(ballot_name, item): {'votes': 0}}})
-    print(item, ballot_name)
+    #find given value and sets it to ''
+    #then finds where given route is set to '' and removes it
+    db.users.update({'email': session['user']['email']},{'$set': {'ballot_items.{}.{}'.format(ballot_name, item): ''}})
+    db.users.update({'email': session['user']['email']},{'$unset': {'ballot_items.{}.{}'.format(ballot_name, item): ''}})
+    db.users.update({'email': session['user']['email']},{'$unset': {'ballot_items.{}'.format(ballot_name): ''}})
+
 
 
 def get_items_voter(ballot_name):
