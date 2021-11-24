@@ -9,6 +9,8 @@ python = "^3.10"
 Flask = "^2.0.2"
 pymongo = "^3.12.1"
 passlib = "^1.7.4"
+requests = "^2.26.0"
+Flask-Avatars = "^0.2.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
