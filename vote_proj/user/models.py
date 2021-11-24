@@ -78,11 +78,14 @@ def get_email():
     return session['user']['email']
 
 def del_img(item, ballot_name):
-    #find given value and sets it to ''
-    #then finds where given route is set to '' and removes it
+                                                #find given value and sets it to ''
+                                                #then finds where given route is set to '' and removes it
     db.users.update({'email': session['user']['email']},{'$set': {'ballot_items.{}.{}'.format(ballot_name, item): ''}})
     db.users.update({'email': session['user']['email']},{'$unset': {'ballot_items.{}.{}'.format(ballot_name, item): ''}})
-    db.users.update({'email': session['user']['email']},{'$unset': {'ballot_items.{}'.format(ballot_name): ''}})
+    x = db.users.find({'email': session['user']['email']},{'ballot_items.{}'.format(ballot_name)})
+    x = list(x)
+    if len(x[0]['ballot_items'][ballot_name]) == 0:
+        db.users.update({'email': session['user']['email']},{'$unset': {'ballot_items.{}'.format(ballot_name): ''}})
 
 
 
