@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template
 from flask_file import app
-from user.models import User, get_ballots, get_items_voter
+from user.models import User, get_ballots, get_items_voter, vote
 
 import json
 from bson import json_util
@@ -38,15 +38,22 @@ def add_ballot_item():
     description = request.form.get('description')
     return User().add_ballot_item(item_name, image, description)
 
-@app.route('/checker', methods=["GET"])             #being used in scripts.js file
-def checker():
-    ballot_item_dict = get_ballots()
-    return jsonify({'blah': ballot_item_dict})
+# @app.route('/checker', methods=["GET"])             #being used in scripts.js file
+# def checker():
+#     ballot_item_dict = get_ballots()
+#     return jsonify({'blah': ballot_item_dict})
 
 @app.route('/dashboard/<ballot_name>', methods=["GET"])
 def profile(ballot_name):
     item = get_items_voter(ballot_name)
-    return render_template('voter_page.html', item=item)
+    return render_template('voter_page.html', item=item, ballot_name=ballot_name)
+
+@app.route('/voting', methods=["POST"])
+def voting():
+    item_name = request.form.get('name')
+    ballot_name = request.form.get('ballot_name')
+    vote(item_name, ballot_name)
+    return {'success': "doness"}
 
 def get_ballot_items():
     ballot_item_dict = get_ballots()
