@@ -5,7 +5,6 @@ from flask_file import db
 import uuid     #used to make _id easier to use?
 
 class User():
-
     def start_session(self, user):          #used in the login in class method
         del user['password']
         session['logged_in'] = True
@@ -77,6 +76,11 @@ def get_ballots():
 
 def get_email():
     return session['user']['email']
+
+def del_img(item, ballot_name):
+    db.mycollection.update({'email': session['user']['email']}, {'$pull':{'ballot_items.{}.{}.description'.format(ballot_name, item): {'votes': 0}}})
+    print(item, ballot_name)
+
 
 def get_items_voter(ballot_name):
     new_dict = {}

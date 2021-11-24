@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template
 from flask_file import app
-from user.models import User, get_ballots, get_items_voter, vote
+from user.models import User, get_ballots, get_items_voter, vote, del_img
 
 import json
 from bson import json_util
@@ -30,6 +30,14 @@ def login():
 def add_ballot():
     ballot_name = request.form.get('item_name')
     return User().add_ballot_name(ballot_name)
+
+
+@app.route('/destroyImage', methods=["POST"])
+def delete_img():
+    item_name = request.form.get('item_name')
+    ballot_name = request.form.get('ballot_name')
+    del_img(item_name, ballot_name)
+    return ({"Close": "X"})
 
 @app.route('/user/add_ballot_item', methods=["POST"])             #being used in scripts.js file
 def add_ballot_item():
