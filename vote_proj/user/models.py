@@ -75,6 +75,9 @@ def get_ballots():
         return ballot_item_dict
     return {"No Ballots": "Make Some Ballots!"}
 
+def get_email():
+    return session['user']['email']
+
 def get_items_voter(ballot_name):
     new_dict = {}
     ballots = db.users.find({ 'email': session['user']['email']})
@@ -91,7 +94,5 @@ def get_items_voter(ballot_name):
     return {'error': "No items found"}
 
 
-    # if 'ballot_items' in my_keys:
-    #     ballot_item_dict = new_dict[session['user']['name']]['ballot_items']
-    #     return ballot_item_dict
-    # return {"No Ballots": "Make Some Ballots!"}
+def vote(item, ballot_name):
+    db.users.update({'email': session['user']['email']}, {'$inc':{'ballot_items.{}.{}.votes'.format(ballot_name, item): 1}})
