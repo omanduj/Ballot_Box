@@ -18,28 +18,30 @@
                 </div>
            </div>
         </div>
-        <div class="right_sidebar">
-            <div class="hero-bg">
-                {% if ballot_names[0] != 'No Ballots'  %}
-                    {% for name in ballot_names %}
-                        <div class="card2">
-                            <form action="/dashboard/{{name}}">
-                                <input type="submit" value={{ name }} class="dash_ballot_name">
-                                <div style="margin-left: 5.3em; margin-top: -2.em;">
-                                    <div class="horizontal-scroll-wrapper squares">
-                                        {% for item in ballot_item_dict[name] %}
-                                            <div>
-                                                <div class="item_display">
-                                                    {{ item }}: {{ballot_item_dict[name][item]['votes'] }}
+        <div class="right_side">
+            <div class="right_sidebar">
+                <div class="hero-bg">
+                    {% if ballot_names[0] != 'No Ballots'  %}
+                        {% for name in ballot_names %}
+                            <div class="card2">
+                                <form action="/dashboard/{{name}}">
+                                    <input type="submit" value={{ name }} class="dash_ballot_name">
+                                    <div style="margin-left: 5.3em; margin-top: -2.em;">
+                                        <div class="horizontal-scroll-wrapper squares">
+                                            {% for item in ballot_item_dict[name] %}
+                                                <div>
+                                                    <div class="item_display">
+                                                        {{ item }}: {{ballot_item_dict[name][item]['votes'] }}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                  </div>
-                            </form>
-                        </div>
-                    {% endfor %}
-                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                      </div>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
