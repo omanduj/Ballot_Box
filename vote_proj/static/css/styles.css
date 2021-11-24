@@ -154,15 +154,7 @@ p {
     box-shadow: 0 8px 26px -4px rgba(0,0,0,0.15);
     border-radius: 5px;
     background: white;
-}
-
-.item_display {
-    float: left;
-    border-radius: 5px;
-    background: pink;
-    padding: 1em 1em;
-    margin-left: 3em;
-    margin-top: -3em;
+    overflow-y: hidden;
 }
 
 .dash_ballot_name {
@@ -196,6 +188,9 @@ p {
     margin-top: 1em;
 }
 
+.user_info {
+    font-family: 'Dosis', sans-serif;
+}
 .content_votes {
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 150%;
@@ -225,9 +220,13 @@ p {
     background: url('/static/images/dashboard_side.jpg');
 }
 
-
-
-
+.user_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    margin-top: 3em;
+}
 
 .card5 {
   margin: 0 30px 60px;
@@ -414,4 +413,50 @@ margin-top: -6em;
 
 .voter--secondary:hover {
   background: var(--secondary-dark);
+}
+
+
+
+
+
+
+
+
+
+
+.item_display {
+    float: left;
+    border-radius: 5px;
+    background: pink;
+    padding: 1em 1em;
+    margin-right: 80em;
+    width: 5.5em;
+    height: 4.6em;
+    margin-top: -8.5em;
+    text-align: center;
+}
+
+.horizontal-scroll-wrapper {
+  width: 200px;
+  height: 700px;
+  margin-left: -19em;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.horizontal-scroll-wrapper > div {
+  width: 100px;
+  height: 100px;
+}
+.horizontal-scroll-wrapper {
+  transform: rotate(-90deg);
+  transform-origin: right top;
+}
+.horizontal-scroll-wrapper > div {
+  transform: rotate(90deg);
+  transform-origin: right top;
+}
+.horizontal-scroll-wrapper {
+    width: 500px;
+    margin-top: -20em;
+  transform:rotate(-90deg) translateY(-100px);
 }
