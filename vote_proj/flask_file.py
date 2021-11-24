@@ -1,10 +1,13 @@
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session, redirect, request
 from functools import wraps
+from flask_avatars import Avatars
 import pymongo
+import requests
+import hashlib
 
 app = Flask(__name__)
 app.secret_key = b'\x19\xad\xa4?\xb72\xca.H\ng=\xa4\xcdW\xc2' #needed to run sessions
-
+avatars = Avatars(app)
 #connect to db
 client = pymongo.MongoClient('mongodb://localhost:27017/')
 #this creates database with the name user_login_system, and associated it with variable db
@@ -26,6 +29,7 @@ def login_required(f):
 #imports route names from seperate file
 from user import routes
 from user.routes import get_ballot_items
+from user.models import get_email
 
 @app.route('/')
 def home():
@@ -36,7 +40,9 @@ def home():
 @login_required
 def dashboard():
     ballot_item_dict, ballot_names = get_ballot_items()
-    return render_template('dashboard.html', ballot_item_dict=ballot_item_dict, ballot_names=ballot_names)
+    email = get_email()
+    avatar_hash = hashlib.md5(email.lower().encode('utf-8')).hexdigest()
+    return render_template('dashboard.html', ballot_item_dict=ballot_item_dict, ballot_names=ballot_names, avatar_hash=avatar_hash)
 
 @app.route('/ballot_name/')
 @login_required
