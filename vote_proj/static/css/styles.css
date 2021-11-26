@@ -71,6 +71,20 @@ p {
   height: 44.3em;
 }
 
+.card-wrapper1, .card-wrapper2, #scroll {
+    animation: fadeIn 2s forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-2em);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .sidebar {
    background-position: 85% 45%;
    margin-top: -5em;
