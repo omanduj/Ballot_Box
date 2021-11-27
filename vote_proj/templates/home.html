@@ -7,39 +7,41 @@
             <h1 class="title">Ballot Box</h1>
             <h2 class="subtitle">For All Your Voting Needs!</h2>
         </div>
-    <div>
-        <div class="card">
-            <h1 class="headings">Sign In</h1>
-            <form name="login_form" method="POST">
+        <div>
+            <div class="card">
+                <h1 class="headings">Sign In</h1>
+                <form name="login_form" method="POST">
 
-                <label for="email">Email</label>
-                <input type="email" name="email" class="field" required>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="field" required>
 
-                <label for="password">Password</label>
-                <input type="password" name="password" class="field" required>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="field" required>
 
-                <p class="error error--hidden"></p>
+                    <p class="error error--hidden"></p>
 
-                <input type="submit" value="Log In" class="btn" required>
-            </form>
+                    <input type="submit" value="Log In" class="btn" required>
+                </form>
+            </div>
+            <div class="card">
+                <h1 class="headings">Create Account</h1>
+                <form name="signup_form" method="POST">
+
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="field" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="field" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="field" required>
+
+                    <p class="error error--hidden"></p>
+
+                    <input type="submit" value="Sign Up" class="btn" required>
+                </form>
+            </div>
         </div>
-        <div class="card">
-            <h1 class="headings">Create Account</h1>
-            <form name="signup_form" method="POST">
-
-                <label for="name">Name</label>
-                <input type="text" name="name" class="field" required>
-
-                <label for="email">Email</label>
-                <input type="email" name="email" class="field" required>
-
-                <label for="password">Password</label>
-                <input type="password" name="password" class="field" required>
-
-                <p class="error error--hidden"></p>
-
-                <input type="submit" value="Sign Up" class="btn" required>
-            </form>
     </div>
 </div>
 {% endblock %}
