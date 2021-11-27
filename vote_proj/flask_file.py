@@ -6,7 +6,7 @@ import requests
 import hashlib
 
 app = Flask(__name__)
-app.secret_key = b'\x19\xad\xa4?\xb72\xca.H\ng=\xa4\xcdW\xc2' #needed to run sessions
+app.secret_key = '' #needed to run sessions
 avatars = Avatars(app)
 #connect to db
 client = pymongo.MongoClient('mongodb://localhost:27017/')
@@ -32,7 +32,7 @@ from user.routes import get_ballot_items
 from user.models import get_email
 
 @app.route('/')
-def home(): 
+def home():
     return render_template('home.html')
 
 
