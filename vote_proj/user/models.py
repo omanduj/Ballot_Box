@@ -107,3 +107,7 @@ def get_items_voter(ballot_name):
 
 def vote(item, ballot_name):
     db.users.update({'email': session['user']['email']}, {'$inc':{'ballot_items.{}.{}.votes'.format(ballot_name, item): 1}})
+    ballots = db.users.find({'email': session['user']['email']},{'ballot_items.{}'.format(ballot_name)})
+    ballots = list(ballots)[0]
+    total_votes = ballots['ballot_items'][ballot_name][item]['votes']
+    return total_votes

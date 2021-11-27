@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request, render_template
 from flask_file import app
 from user.models import User, get_ballots, get_items_voter, vote, del_img
+from flask_socketio import SocketIO, emit
+from bson import json_util
 
 import json
-from bson import json_util
+socketio = SocketIO(app)
 
 #this endpoint is used to obtain data from the scripts.js file
 #specifically from ("form[name=signup_form]") where "form" defines the html tag,
@@ -31,12 +33,14 @@ def add_ballot():
     ballot_name = request.form.get('item_name')
     return User().add_ballot_name(ballot_name)
 
-
+@socketio.on('voting')
 @app.route('/destroyImage', methods=["POST"])
 def delete_img():
     item_name = request.form.get('item_name')
     ballot_name = request.form.get('ballot_name')
     del_img(item_name, ballot_name)
+    ballot_item_dict = get_ballots()
+    socketio.emit('left_over', {'results1': ballot_item_dict[ballot_name]}, broadcast=True)
     return ({"Close": "X"})
 
 @app.route('/user/add_ballot_item', methods=["POST"])             #being used in scripts.js file
@@ -46,11 +50,7 @@ def add_ballot_item():
     description = request.form.get('description')
     return User().add_ballot_item(item_name, image, description)
 
-# @app.route('/checker', methods=["GET"])             #being used in scripts.js file
-# def checker():
-#     ballot_item_dict = get_ballots()
-#     return jsonify({'blah': ballot_item_dict})
-
+@socketio.on('remove')
 @app.route('/dashboard/<ballot_name>', methods=["GET"])
 def profile(ballot_name):
     item = get_items_voter(ballot_name)
@@ -60,8 +60,9 @@ def profile(ballot_name):
 def voting():
     item_name = request.form.get('name')
     ballot_name = request.form.get('ballot_name')
-    vote(item_name, ballot_name)
-    return {'success': "doness"}
+    amount_of_votes = vote(item_name, ballot_name)
+    socketio.emit('vote_results', {'results1': amount_of_votes, 'item_name': item_name}, broadcast=True)
+    return {'success': "Complete"}, 200
 
 def get_ballot_items():
     ballot_item_dict = get_ballots()

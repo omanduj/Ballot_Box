@@ -32,7 +32,7 @@ from user.routes import get_ballot_items
 from user.models import get_email
 
 @app.route('/')
-def home():
+def home(): 
     return render_template('home.html')
 
 

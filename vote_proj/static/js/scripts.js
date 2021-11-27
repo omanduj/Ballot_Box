@@ -138,3 +138,29 @@ $("form[name=delete]").submit(function(e){
     })
     e.preventDefault();
 });
+
+$("document").ready(function(){
+
+    // $("#show").on("click", function(){
+    //     $("#text_box").show();
+    // });
+
+    $("#hide").on("click", function(){
+        $("#text_box").hide();
+    });
+});
+
+// $(document).ready(function(){
+//     var socket = io.connect('http://127.0.0.1:5000')
+//
+//     $('#vote1').on('click', function(){
+//         socket.emit('vote', 1);
+//     });
+//
+//     socket.on('vote_results', function(results){        //results is whats in the dict defined in socker endpoint
+//         console.log(results);
+//         var new_text = $('<p>');
+//         new_text.append(results['results1']);
+//         $("#num_votes").html(new_text);
+//     });
+// });
