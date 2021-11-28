@@ -6,7 +6,7 @@ import requests
 import hashlib  # used for avatars
 
 app = Flask(__name__)
-app.secret_key = b"\x19\xad\xa4?\xb72\xca.H\ng=\xa4\xcdW\xc2"  # needed to run sessions
+app.secret_key = b"Replace Here"  # needed to run sessions
 avatars = Avatars(
     app
 )  # Used to obtain personal Avatars for users based on their emails
