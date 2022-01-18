@@ -37,3 +37,6 @@ The following url is used to add a new ballot to a users account:
 
 The following url is used to add an item to a ballot:
 >http://127.0.0.1:5000/ballot_items/
+
+Clicking on the name of a ballot on the users dashboard takes you to the voting screen!
+>http://127.0.0.1:5000/dashboard/(Your-Ballot!)
