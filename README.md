@@ -42,4 +42,4 @@ The following url is used to add an item to a ballot:
 
 Clicking on the name of a ballot on the users dashboard takes you to the voting screen!
 >http://127.0.0.1:5000/dashboard/(Your-Ballot!)
->![Screen Shot 2022-01-18 at 4 30 08 PM](https://user-images.githubusercontent.com/44513190/150029419-9c955ff3-87bb-4208-bd55-3d3da7eb07f8.png)
+![Screen Shot 2022-01-18 at 4 43 38 PM](https://user-images.githubusercontent.com/44513190/150029997-17b45d64-bf09-4f62-accd-ff8a9e800154.png)
