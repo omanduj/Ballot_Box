@@ -98,7 +98,7 @@ class User:
                 }
             },
         )
-        return jsonify({"success": "Item added"}), 200
+        return jsonify({"success": item_name}), 200
 
 
 def get_ballots():

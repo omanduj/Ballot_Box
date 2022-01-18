@@ -1,7 +1,43 @@
-{% extends 'base.html' %}
+{% extends 'base_beta.html' %}
 
 {% block content %}
-<div class="card-wrapper1">
+    <div class="center">
+        <h1 class="title">Ballot Box</h1>
+        <h2 class="subtitle">For All Your Voting Needs!</h2>
+    
+        <div class="main" style="margin-left: 35%;">  	
+            <input type="checkbox" id="chk" aria-hidden="true">
+                <div class="signup">
+                    <form name="signup_form" method="POST" onsubmit="return false">
+                        <label for="chk" aria-hidden="true">Sign Up</label>
+                        <!-- <label for="email">Email</label> -->
+                        <div id='field'>
+                            <input type="text" name="name" class="field" placeholder="Name" style="margin-top: 1em;" required>
+                            <input type="email" name="email" class="field" placeholder="Email" style="margin-top: 1em;" required>
+                            <input type="password" name="password" class="field" placeholder="Password" style="margin-top: 1em;" required>
+                            <button style="margin-left: 4%; margin-top: 1em;">Sign up</button>
+                            <div style="margin-left: -30%; margin-top: 1em;" id='response_add'></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="login">
+                    <form name="login_form" method="POST" onsubmit="return false">
+                        <label for="chk" aria-hidden="true">Login</label>
+                        <div id='field'>
+                            <input type="email" name="email" class="field" placeholder="Email" style="margin-top: 1em;" required>
+                            <input type="password" name="password" class="field" placeholder="Password" style="margin-top: 1em;" required>
+                            <button style="margin-left: 4%; margin-top: 1em;">Login</button>
+                            <div style="margin-left: -30%; margin-top: 1em;" id='response_add2'></div>
+                        </div>  
+                    </form>
+                </div>
+        </div>
+    </div>
+
+
+
+
+<!-- <div class="card-wrapper1">
     <div>
         <div class="center">
             <h1 class="title">Ballot Box</h1>
@@ -43,5 +79,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 {% endblock %}
