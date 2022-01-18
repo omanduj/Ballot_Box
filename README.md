@@ -26,7 +26,7 @@ In order to run the application, you must execute the following command in the a
  This will cause the program to run locally on port 5000. The webpage is located in the following url:
 >http://127.0.0.1:5000/
 
-Once user has logged in or signed up, they will be directed to the following url:
+Once user has logged in or signed up, they will be directed to the following url where it will show snapshots of ballots:
 >http://127.0.0.1:5000/dashboard/
 
 This will display user information as well as ballots under the users account, the items in those ballots and
