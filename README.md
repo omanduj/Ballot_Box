@@ -25,9 +25,11 @@ In order to run the application, you must execute the following command in the a
 
  This will cause the program to run locally on port 5000. The webpage is located in the following url:
 >http://127.0.0.1:5000/
+![Screen Shot 2022-01-18 at 4 21 30 PM](https://user-images.githubusercontent.com/44513190/150029387-43b55562-4871-48dc-aeea-2b0bee8d2596.png)
 
 Once user has logged in or signed up, they will be directed to the following url where it will show snapshots of ballots:
 >http://127.0.0.1:5000/dashboard/
+![Screen Shot 2022-01-18 at 4 31 29 PM](https://user-images.githubusercontent.com/44513190/150029405-a193452d-f774-49ff-aee6-31f89b770786.png)
 
 This will display user information as well as ballots under the users account, the items in those ballots and
 the amount of votes each item has.
@@ -40,3 +42,4 @@ The following url is used to add an item to a ballot:
 
 Clicking on the name of a ballot on the users dashboard takes you to the voting screen!
 >http://127.0.0.1:5000/dashboard/(Your-Ballot!)
+>![Screen Shot 2022-01-18 at 4 30 08 PM](https://user-images.githubusercontent.com/44513190/150029419-9c955ff3-87bb-4208-bd55-3d3da7eb07f8.png)
