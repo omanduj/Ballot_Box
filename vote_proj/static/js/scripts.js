@@ -14,7 +14,8 @@ $("form[name=signup_form]").submit(function(e){     //when form=X, on submit, do
             window.location.href = "/dashboard/"    //redirects on success to dashboard endpoint
         },
         error: function(resp) {
-            console.log(resp);
+            var txt = 'User with that email already exists';
+            $('#response_add').html(txt);
             $error.text(resp.responseJSON.error).removeClass('error--hidden');       //if error, will show text that is found in return statement
                                                     //of signup class. So it will print out the error whose key is error
         }
@@ -40,6 +41,8 @@ $("form[name=login_form]").submit(function(e){
         },
         error: function(resp) {
             console.log(resp);
+            var txt = 'Invalid Credentials';
+            $('#response_add2').html(txt);
             $error.text(resp.responseJSON.error).removeClass('error--hidden');
         }
     })
@@ -82,7 +85,9 @@ $("form[name=ballot_item]").submit(function(e){
         dataType: "json",
         success: function(resp) {
             console.log(resp);
-            window.location.href = "/ballot_items/"
+            var txt = resp['success'] + ' has been added successfuly'
+            $('#response_add').html(txt);
+
         },
         error: function(resp) {
             console.log(resp);
