@@ -66,7 +66,7 @@ def delete_img():
     ballot_name = request.form.get("ballot_name")
     del_img(item_name, ballot_name)
     ballot_item_dict = get_ballots()
-    return {"Close": "X"}
+    return {"Close": "done"}
 
 
 @app.route("/user/add_ballot_item", methods=["POST"])

@@ -68,6 +68,7 @@ p {
   display: flex;
   background: url('/static/images/dashboard_side.jpg');
   background-position: 85% 45%;
+  background-size: 100%;
   height: 44.3em;
 }
 
@@ -137,6 +138,7 @@ p {
   justify-content: center;
   display: flex;
   background: url('/static/images/flower.jpg');
+  background-size: 100%;
   background-position: 25% 80%;
   height: 44.5em;
 }
@@ -158,6 +160,7 @@ p {
   justify-content: center;
   display: flex;
   background: url('/static/images/deep_purple.jpg');
+  background-size: 100%;
   background-position: 20% 50%;
   height: 44.5em;
 }
