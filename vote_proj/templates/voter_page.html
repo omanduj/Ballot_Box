@@ -7,6 +7,7 @@
 By using overflow-x, we can create scroll bars when the contents of this div are wider than the container. By setting this paragraph to 250 percent, it is 250 percent wider than the parent container - forcing an overflow.
 </p>
 </div> -->
+
 <div id="scroll">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
@@ -56,4 +57,58 @@ By using overflow-x, we can create scroll bars when the contents of this div are
         </div>
     </div>
 </div>
+
+
+<!-- <html>
+  <body>
+    <div class="container">
+        <div id="scroll">
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    var socket = io.connect('http://127.0.0.1:5000')
+        
+                    socket.on('vote_results', function(results){        //results is whats in the dict defined in socket endpoint
+                        console.log(results);
+                        var new_text = $('<p>');
+                        new_text.append(results['results1']);
+                        $('#' + results['item_name']).html(new_text);
+                    });
+                });
+        
+            </script>
+                    <a href="/dashboard/" type="submit" class="back_button">Back To Dashboard</a>
+                    <div class="card-wrapper3">
+                        {% for name, value in item.items() %}
+                        <div class="card5">
+                            <form name="delete" class="AClass" method="POST">
+                                <input hidden type="text" name="ballot_name" value={{ ballot_name }} class="field" required>
+                                <input hidden type="text" name="item_name" value={{ name }} class="field" required>
+                                <div style="position:relative;">
+                                        <button onclick="alert('Deleting item')" id="deleter" type="submit" class="AClass">
+                                            <span>&times;</span>
+                                        </button>
+        
+                                </div>
+                            </form>
+                            <div class="center">
+                                <label class="content_name" for="item_name">{{ name }}</label>
+                                <img class="content_image" src="{{ value['image'] }}"></img>
+                                <label class="content" for="description">{{value['description']}}</label>
+                                <label class="content_votes" id="{{name}}" for="votes">{{value['votes']}}</label>
+                                <form id="vote1" name="vote" method="POST">
+                                    <input hidden type="text" name="ballot_name" value={{ ballot_name }} class="field" required>
+                                    <input hidden type="text" name="name" value={{ name }} class="field" required>
+                                    <input type="submit" value="Vote!" class="voter" required>
+                                </form>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+        </div>
+   </div>
+  </body>
+</html> -->
+
 {% endblock %}
