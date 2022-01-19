@@ -134,6 +134,7 @@ $("form[name=delete]").submit(function(e){
         dataType: "json",
         success: function(resp) {
             console.log(resp);
+            location.reload();
         },
         error: function(resp) {
             console.log(resp);
