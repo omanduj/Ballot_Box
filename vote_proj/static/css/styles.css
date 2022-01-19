@@ -89,7 +89,6 @@ p {
    margin-top: -5em;
    margin-left: -2.3em;
    border-radius: 50px;
-
 }
 
 .right_side {
@@ -444,14 +443,15 @@ margin-top: -6em;
 
 .back_button {
     font-family: 'Ubuntu Condensed', sans-serif;    color: white;
-    margin-left: 19.2em;
     margin-top: 1em;
     margin-bottom: -2em;
+    border: 0;
     font-size: 2rem;
     text-decoration:none;
-    background-color: Transparent;
-    background-repeat:no-repeat;
     border: none;
+    display: inline-block;
+    padding: 3px;
+    z-index: 5;
 }
 
 .AClass{
@@ -511,4 +511,9 @@ margin-top: -6em;
 
 .item_added {
   font-family: 'Varela Round', sans-serif;
+}
+
+.outer {
+  width: 100%;
+  text-align: center;
 }
